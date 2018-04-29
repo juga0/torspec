@@ -1,0 +1,149 @@
+
+          Tor Bandwidth Measurements Document Format
+          [juga: which name should we give to this document?]
+
+1. Scope and preliminaries
+
+  This document describes the format of Tor's bandwidth measurements
+  document, version X.X.X [juga: which version should be this?]
+  and later.
+
+  Since Tor version X.X.X [juga: which tor version?] the directory
+  authorities use the bandwidth measurements document called
+  "V3BandwidthsFile" and produced by Torflow [1]
+  (format described in README.spec.txt [2]).
+
+    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+    NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
+    "OPTIONAL" in this document are to be interpreted as described in
+    RFC 2119.
+
+1.2. Acknowledgements
+
+  The original bandwidth measurement scanner (Torflow) and format was
+  created by mike. Teor suggested to write this specification while
+  contributing on pastly's new bandwidth scanner implementation.
+
+  This specification was revised after feedback from:
+
+    XXX
+
+1.3 Outline
+
+  The bandwidth measurements mentioned in sections 3.4.1 and 3.4.2
+  of dir-spec.txt [3] are obtained by bandwidth authorities, which are
+  either directory authorities or other servers running bandwidth
+  measurement scanners and sending the results to the former.
+  [juga: it seems that bandwidth authorities have not been formally
+  before]
+
+2. Format details
+
+  Bandwidth measurements MUST contain the following sections:
+  - Header (exactly once)
+  - Relays measurements (zero or more times)
+
+  Each section (or entry) ends with a separator.
+
+2.1. Nonterminals
+
+  The following nonterminals are defined in the Onionoo details
+  document specification [4]:
+
+    fingerprint
+    nickname
+
+  In the bandwidth measurement documents nickname is optional.
+
+  The following nonterminals are defined in the in dir-spec.txt:
+
+    NL      (newline)
+    SP      (space)
+
+    "bw" = INT, the aggregated measured bandwidth of this relay, in
+    kilobytes per second.
+
+  We introduce the following nonterminals:
+  [juga: this should probably be defined more formally and should
+  probably link to other documents, which ones?]
+
+    "version" = The name and the version of the bandwidth scannner
+    software, such as "sbws 0.1.0".
+    The name of the software, if absent, is assumed to be "torflow".
+    [juga: which should be the version if absent?]
+
+    "timestamp" = INT, the Unix Epoch time when the file was created.
+
+2.2. Header format
+
+  It MUST consists of:
+
+    "timestamp" timestamp NL
+    "version" version NL
+
+2.3. Relay measurements format
+
+  Relays measurements MUST consist of the following items.
+
+    "node_id" fingerprint SP
+    "bw" bandwidth SP
+
+  When there are no more items, the "bw" item ends with NL instead of
+  SP.
+
+2.4. Optional extra items
+
+  Different implementations of the bandwidth measurements scanners MAY
+  include other items per relay.
+
+  For instance, sbws includes:
+
+    "rtt" = INT, Round Trip Time (to obtain 1B)
+
+  Every relay measurement in sbws consists of:
+
+    "node_id" fingerprint SP
+    "bw" bandwidth SP
+    "nick=" nickname SP
+    "rtt=" rtt SP
+    "time=" timestamp NL
+
+  Every relay measurement in Torflow consists of:
+
+    "node_id" fingerprint SP
+    "bw" bandwidth SP
+    "nick=" nickname SP
+    "measured_at=" slice timestamp NL
+
+  The "measured_at" does not correspond to the "time" in sbws.
+  [juga: actually, if bwauths use "measured_at", then the code on them
+  or sbws should be changed].
+
+  Torflow includes other items that are out of the scope of this
+  document.
+
+References:
+
+1. https://gitweb.torproject.org/torflow.git
+2.
+https://gitweb.torproject.org/torflow.git/tree/NetworkScanners/BwAuthority/README.spec.txt#n332
+3. https://gitweb.torproject.org/torspec.git/tree/dir-spec.txt
+4. https://metrics.torproject.org/onionoo.html#details
+
+
+A. Sample data
+
+A.1. Torflow
+
+1523911758
+node_id=$68A483E05A2ABDCA6DA5A3EF8DB5177638A27F80 bw=392760 nick=Test
+measured_at=1523911725 updated_at=1523911725 pid_error=4.11374090719
+pid_error_sum=4.11374090719 pid_bw=57136645 pid_delta=2.12168374577
+circ_fail=0.2 scanner=/filepath
+
+A.2. sbws
+
+1523911758
+version=0.1.0
+node_id=$68A483E05A2ABDCA6DA5A3EF8DB5177638A27F80 bw=392760 nick=Test
+rtt=380 time=1523911725
