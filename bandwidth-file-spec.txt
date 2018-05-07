@@ -219,15 +219,12 @@ If there are, the parser SHOULD choose an arbitrary Value.
 
 There MUST NOT be multiple RelayLine per relay identity (node_id or 
 master-key-ed25519).
-If there are, the parser SHOULD choose an arbitrary Value.
-[NOTE: or should be ignored?]
+If there are, parsers SHOULD issue a warning and MAY choose an arbitrary
+value or ignore both values.
 
 If a parser does not recognize any extra material in a RelayLine, 
-the Line MUST be ignored.
+the extra material MUST be ignored.
 
-If a RelayLine does not conform to the following format, the Line 
-SHOULD be ignored by parsers.
-  
 Each RelayLine MUST include the following KeyValue pairs:
 In version 1.0.0, node_id MUST NOT be at the end of the Line.
 [NOTE: even if we backport the fix to 2.9.0?]
