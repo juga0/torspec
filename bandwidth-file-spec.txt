@@ -116,7 +116,6 @@ Some header lines MUST appear in specific positions, as documented below.
 All other lines can appear in any order.
 If a parser does not recognize any extra material in a header line, 
 the line MUST be ignored.
-There MUST NOT be multiple key_value header lines with the same key.
 
 It consists of:
 
@@ -182,6 +181,12 @@ It consists of:
   key_value NL
 
     [Zero or more times.]
+
+    There MUST NOT be multiple key_value header lines with the same key.
+    If there are, the parser SHOULD choose an arbitrary line.
+
+    If a parser does not recognize a Keyword in a key_value line, it 
+    MUST be ignored.
 
     Future format versions may include additional key_value header lines.
     Additional header lines will be accompanied by a minor version increment.
