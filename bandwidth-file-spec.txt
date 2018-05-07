@@ -30,7 +30,8 @@
 
   This specification was revised after feedback from:
 
-    XXX
+    Nick Mathewson (nickm)
+    Iain Learmonth (irl)
 
 1.3 Outline
 
