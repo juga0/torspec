@@ -90,7 +90,8 @@
 
   We define the following nonterminals:
 
-    value ::= ArgumentChar+
+    Value ::= any printing ASCII character except NL and SP.
+    value ::= Value+
     key_value ::= Keyword "=" value
     line ::= ArgumentChar* NL
     separator ::= "====="
