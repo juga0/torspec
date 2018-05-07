@@ -334,7 +334,7 @@ Every relay_line in sbws version 0.1.0 consists of:
     
 2.4.2. Torflow
 
-Torflow relay lines include node_id and bw, and other key_value pairs [2].
+Torflow relay_lines include node_id and bw, and other key_value pairs [2].
 
 References:
 
