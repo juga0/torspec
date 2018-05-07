@@ -57,8 +57,7 @@
 
   The Bandwidth List MUST contain the following sections:
   - Header List (exactly once)
-  - List Relay's Bandwidth (zero or more times)
-  [wouldn't make more sense to say Relays' Bandwidth List?]
+  - Relays' Bandwidth List (zero or more times)
   If it does not contain these sections, parsers SHOULD ignore the file.
 
 2.1. Definitions
@@ -216,9 +215,9 @@ It consists of:
     Implementations of version 1.1.0 SHOULD include this separator.
 
     [NOTE: should the separator be a different section since it's not
-    technically part of the header nor the list relays' bandwidth?]
+    technically part of the header nor the Relays' Bandwidth List?]
 
-2.3. List Relays' Bandwidth format
+2.3. Relays' Bandwidth List format
 
 It consists of one or more relay_lines with the relays' bandwidth
 in arbitrary order.
