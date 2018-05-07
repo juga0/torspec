@@ -83,8 +83,8 @@
     Line ::= ArgumentChar* NL
     RelayLine ::= KeyValue (SP KeyValue)* NL
     KeyValue ::= Keyword "=" value
-    value ::= Value+
-    Value ::= any printing ASCII character except NL and SP.
+    value ::= ArgumentCharValue+
+    ArgumentCharValue ::= any printing ASCII character except NL and SP.
     separator ::= "====="
     timestamp ::= Int
     bandwidth ::= Int
