@@ -77,9 +77,12 @@
     nickname
     hexdigest (a '$', followed by 40 hexadecimal characters 
       ([A-Fa-f0-9]))
+    MasterKey
 
   [NOTE: fingerprint is used in declaration in 2.1.1,
   but it's not defined. Instead hexdigest is defined]
+
+  [NOTE: MasterKey is not defined, but used in declaration]
 
   Nonterminals defined in "Tor Directory List Format" (dir-list-spec.txt),
   section 2.2.1.:
@@ -215,7 +218,19 @@ Each relay_line MUST include the following key_value in arbitrary order:
     [Exactly once.]
     
     The fingerprint for the relay's RSA identity key.
+
+  "master-key-ed25519=" MasterKey
     
+    [Zero or one time.]
+
+    The relays's master Ed25519 key, base64 encoded, 
+    without trailing "="s, to avoid ambiguity with key_value "="
+    character.
+
+    Implementations of version 1.1.0 SHOULD include both node_id and
+    and master-key-ed25519.
+    Parsers SHOULD accept lines that contain at least one of them.
+
   "bw=" bandwidth
   
     [Exactly once.]
