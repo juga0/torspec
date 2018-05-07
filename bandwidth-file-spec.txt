@@ -93,14 +93,14 @@
 
   We define the following nonterminals:
 
-    Value ::= any printing ASCII character except NL and SP.
-    value ::= Value+
-    key_value ::= Keyword "=" value
     line ::= ArgumentChar* NL
+    relay_line ::= key_value (SP key_value)* NL
+    key_value ::= Keyword "=" value
+    value ::= Value+
+    Value ::= any printing ASCII character except NL and SP.
     separator ::= "====="
     timestamp ::= Int
     bandwidth ::= Int
-    relay_line ::= key_value (SP key_value)* NL
 
   [NOTE: Define datetime?: datetime::= YYYY-MM-DD HH:MM:SS, blah?]
   [NOTE: separator, value and key_value are defined in dir-spec, but with a 
