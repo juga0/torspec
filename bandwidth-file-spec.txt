@@ -220,6 +220,7 @@ There can be at most one relay_line per relay identity (fingerprint).
 
 There MUST NOT be multiple key_value pairs with the same key in the same
 relay_line.
+If there are, the parser SHOULD choose an arbitrary value.
 
 If a parser does not recognize any extra material in a relay_line, 
 the line MUST be ignored.
@@ -253,6 +254,7 @@ Each relay_line MUST include the following key_value in arbitrary order:
     Tor accepts zero bandwidths, but they trigger bugs in older Tor
     implementations. Therefore, implementations SHOULD NOT produce zero
     bandwidths. Instead, they SHOULD use one as their minimum bandwidth.
+    If there are zero bandwidths, the parser MAY ignore them.
   
     Multiple measurements can be aggregated using an averaging scheme, such
     as a mean, median, or decaying average.
@@ -279,9 +281,7 @@ Each relay_line MUST include the following key_value in arbitrary order:
   
     Additional key_value pairs MUST NOT use any keywords specified in the
     header format.
-  
-  If a relay line does not conform to this format, the line SHOULD be
-  ignored by parsers.
+    If there are, the parser MAY ignore conflicting keywords.
   
 2.4. Implementation notes
 
