@@ -74,13 +74,9 @@
     hexdigest (a '$', followed by 40 hexadecimal characters 
       ([A-Fa-f0-9]))
 
-  Nonterminals defined in Tor Directory List Format
- (dir-list-spec.txt [4]) section 2.2.1.:
+  Nonterminal defined section 2 of version-spec.txt [4]:
 
     version_number
-
-  [NOTE: version_number is not defined, but used in declaration 
-  in dir-list-spec]
 
   We define the following nonterminals:
 
@@ -343,7 +339,7 @@ References:
 1. https://gitweb.torproject.org/torflow.git
 2. https://gitweb.torproject.org/torflow.git/tree/NetworkScanners/BwAuthority/README.spec.txt#n332
 3. https://gitweb.torproject.org/torspec.git/tree/dir-spec.txt
-4. https://gitweb.torproject.org/torspec.git/tree/dir-list-spec.txt
+4. https://gitweb.torproject.org/torspec.git/tree/version-spec.txt
 5. https://semver.org/
 
 A. Sample data
