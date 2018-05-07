@@ -90,9 +90,8 @@
     Bandwidth ::= Int
     MasterKey ::= a base64-encoded Ed25519 public key, with
     padding characters omitted.
+    DateTime ::= "YYYY-MM-DDTHH:MM:SS", as in ISO 8601
 
-  [NOTE: should all the terms in definitions start with capital letter?]
-  [NOTE: Define datetime?: datetime::= YYYY-MM-DD HH:MM:SS, blah?]
   Note that key_value and value are defined in Tor directory protocol
   with different formats to KeyValue and Value here.
 
@@ -155,7 +154,7 @@ It consists of:
     
     This Line has been added in version 1.1.0 of this specification.
 
-  "generator_started=" YYYY-MM-DD HH:MM:SS NL
+  "generator_started=" DateTime NL
 
     [Zero or one time.]
 
@@ -164,7 +163,7 @@ It consists of:
     
     This Line has been added in version 1.1.0 of this specification.
 
-  "earliest_bandwidth=" YYYY-MM-DD HH:MM:SS NL
+  "earliest_bandwidth=" DateTime NL
 
     [Zero or one time.]
 
@@ -328,7 +327,7 @@ Every RelayLine in sbws version 0.1.0 consists of:
     [Exactly once.]
 
     The Unix Epoch time in seconds when the last measurement was performed.
-    [NOTE: should we change also this to ISO format?]
+    [NOTE: should we change also this to DateTime]
     
 2.4.2. Torflow
 
