@@ -230,7 +230,11 @@ If there are, the parser SHOULD choose an arbitrary value.
 If a parser does not recognize any extra material in a relay_line, 
 the line MUST be ignored.
   
-Each relay_line MUST include the following key_value in arbitrary order:
+Each relay_line MUST include the following key_value pairs:
+In version 1.0.0, node_id MUST NOT be at the end of the line.
+[NOTE: even if we backport the fix to 2.9.0?]
+In version 1.1.0, the key_value can be in any arbitrary order.
+[TODO: list of Tor version that support it, when it's done]
 
   "node_id=" hexdigest
     
