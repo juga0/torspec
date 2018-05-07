@@ -103,6 +103,13 @@
   [NOTE: separator, value and key_value are defined in dir-spec, but with a 
   different format, should i call them other way?]
 
+  All lines in the file MUST be 510 characters or less, to allow for the
+  trailing newline and NULL characters.
+  The previous limit was 254 characters in Tor 0.2.6.2-alpha and 
+  earlier.
+  The parser MAY ignore longer lines.
+  [NOTE: Change this restriction in 1.1.0?]
+
 2.2. List Header format
 
 Some header lines MUST appear in specific positions, as documented below.
