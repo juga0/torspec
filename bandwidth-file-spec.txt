@@ -73,9 +73,6 @@
     nickname
     hexdigest (a '$', followed by 40 hexadecimal characters 
       ([A-Fa-f0-9]))
-    MasterKey
-
-  [NOTE: MasterKey is not defined, but used in declaration]
 
   Nonterminals defined in Tor Directory List Format
  (dir-list-spec.txt [4]) section 2.2.1.:
@@ -95,6 +92,8 @@
     separator ::= "====="
     timestamp ::= Int
     bandwidth ::= Int
+    MasterKey ::= a base64-encoded Ed25519 public key, with
+    padding characters omitted.
 
   [NOTE: should all the terms in definitions start with capital letter?]
   [NOTE: Define datetime?: datetime::= YYYY-MM-DD HH:MM:SS, blah?]
