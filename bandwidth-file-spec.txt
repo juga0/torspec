@@ -94,6 +94,8 @@
     bandwidth ::= Int
     relay_line ::= key_value (SP key_value)* NL
 
+[NOTE: Define datetime?: datetime::= YYYY-MM-DD HH:MM:SS, blah?]
+  
 2.2. List Header format
 
 Some header lines MUST appear in specific positions, as documented below.
@@ -142,21 +144,21 @@ It consists of:
     
     This line has been added in version 1.1.0 of this specification.
 
-  "generator_started=" timestamp NL
+  "generator_started=" YYYY-MM-DD HH:MM:SS NL
 
     [Zero or one time.]
 
-    The Unix Epoch time in seconds when the scanner that generates the
-    measurements document started.
+    The date and time timestamp in ISO 8601 format and UTC time zone
+    when the generator started.
     
     This line has been added in version 1.1.0 of this specification.
 
-  "earliest_bandwidth=" timestamp NL
+  "earliest_bandwidth=" YYYY-MM-DD HH:MM:SS NL
 
     [Zero or one time.]
 
-    The Unix Epoch time in seconds when the first relay measurement
-    was obtained.
+    The date and time timestamp in ISO 8601 format and UTC time zone
+    when the first relay bandwidth was obtained.
     
     This line has been added in version 1.1.0 of this specification.
 
@@ -278,6 +280,7 @@ Every relay_line in sbws version 0.1.0 consists of:
     [Exactly once.]
 
     The Unix Epoch time in seconds when the last measurement was performed.
+    [NOTE: should we change also this to ISO format?]
     
 2.4.2. Torflow
 
