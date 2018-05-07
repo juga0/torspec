@@ -56,8 +56,7 @@
 2. Format details
 
   The Bandwidth List MUST contain the following sections:
-  - List Header (exactly once)
-  [wouldn't make more sense to say Header List?]
+  - Header List (exactly once)
   - List Relay's Bandwidth (zero or more times)
   [wouldn't make more sense to say Relays' Bandwidth List?]
   If it does not contain these sections, parsers SHOULD ignore the file.
@@ -113,7 +112,7 @@
   The parser MAY ignore longer lines.
   [NOTE: Change this restriction in 1.1.0?]
 
-2.2. List Header format
+2.2. Header List format
 
 Some header lines MUST appear in specific positions, as documented below.
 All other lines can appear in any order.
@@ -210,9 +209,9 @@ It consists of:
 
     [Zero or one time.]
     
-    The List Header section ends with this separator.
+    The Header List section ends with this separator.
 
-    In version 1.0.0, List Header ends when the first relay bandwidth
+    In version 1.0.0, Header List ends when the first relay bandwidth
     is found conforming to the next section.
     Implementations of version 1.1.0 SHOULD include this separator.
 
