@@ -87,7 +87,7 @@
     ArgumentCharValue ::= any printing ASCII character except NL and SP.
     separator ::= "====="
     Timestamp ::= Int
-    bandwidth ::= Int
+    Bandwidth ::= Int
     MasterKey ::= a base64-encoded Ed25519 public key, with
     padding characters omitted.
 
@@ -257,7 +257,7 @@ In version 1.1.0, the KeyValue can be in any arbitrary order.
     and master-key-ed25519.
     Parsers SHOULD accept Lines that contain at least one of them.
 
-  "bw=" bandwidth
+  "bw=" Bandwidth
   
     [Exactly once.]
 
@@ -307,7 +307,7 @@ Every RelayLine in sbws version 0.1.0 consists of:
   
     As above.
   
-  "bw=" bandwidth SP
+  "bw=" Bandwidth SP
   
     As above.
   
