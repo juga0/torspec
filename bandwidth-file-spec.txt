@@ -227,7 +227,6 @@ the extra material MUST be ignored.
 
 Each RelayLine MUST include the following KeyValue pairs:
 In version 1.0.0, node_id MUST NOT be at the end of the Line.
-[NOTE: even if we backport the fix to 2.9.0?]
 In version 1.1.0, the KeyValue can be in any arbitrary order.
 [TODO: list of Tor version that support it, when it's done]
 
