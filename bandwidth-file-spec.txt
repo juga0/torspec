@@ -100,7 +100,7 @@
   The previous limit was 254 characters in Tor 0.2.6.2-alpha and 
   earlier.
   The parser MAY ignore longer Lines.
-  [NOTE: Change this restriction in 1.1.0?]
+  [TODO: Change this restriction in 1.1.0 or later]
 
 2.2. Header List format
 
