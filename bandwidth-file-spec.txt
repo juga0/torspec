@@ -81,7 +81,7 @@
   We define the following nonterminals:
 
     Line ::= ArgumentChar* NL
-    relay_Line ::= key_value (SP key_value)* NL
+    RelayLine ::= key_value (SP key_value)* NL
     key_value ::= Keyword "=" value
     value ::= Value+
     Value ::= any printing ASCII character except NL and SP.
@@ -211,29 +211,29 @@ It consists of:
 
 2.3. Relays' Bandwidth List format
 
-It consists of one or more relay_Lines with the relays' bandwidth
+It consists of one or more RelayLines with the relays' bandwidth
 in arbitrary order.
 [NOTE: or should be allowed zero Lines?]
 
-There can be at most one relay_Line per relay identity (node_id or
+There can be at most one RelayLine per relay identity (node_id or
 master-key-ed25519).
 
 There MUST NOT be multiple key_value pairs with the same key in the same
-relay_Line.
+RelayLine.
 If there are, the parser SHOULD choose an arbitrary value.
 
-There MUST NOT be multiple relay_Line per relay identity (node_id or 
+There MUST NOT be multiple RelayLine per relay identity (node_id or 
 master-key-ed25519).
 If there are, the parser SHOULD choose an arbitrary value.
 [NOTE: or should be ignored?]
 
-If a parser does not recognize any extra material in a relay_Line, 
+If a parser does not recognize any extra material in a RelayLine, 
 the Line MUST be ignored.
 
-If a relay_Line does not conform to the following format, the Line 
+If a RelayLine does not conform to the following format, the Line 
 SHOULD be ignored by parsers.
   
-Each relay_Line MUST include the following key_value pairs:
+Each RelayLine MUST include the following key_value pairs:
 In version 1.0.0, node_id MUST NOT be at the end of the Line.
 [NOTE: even if we backport the fix to 2.9.0?]
 In version 1.1.0, the key_value can be in any arbitrary order.
@@ -282,7 +282,7 @@ In version 1.1.0, the key_value can be in any arbitrary order.
 
     [Zero or more times.]
 
-    Future format versions may include additional key_value pairs on a relay_Line.
+    Future format versions may include additional key_value pairs on a RelayLine.
     Additional key_value pairs will be accompanied by a minor version increment.
   
     Implementations MAY add additional relay key_value pairs as needed. This
@@ -297,11 +297,11 @@ In version 1.1.0, the key_value can be in any arbitrary order.
   
 2.4. Implementation notes
 
-key_value pairs in relay_Lines that current implementations generate.
+key_value pairs in RelayLines that current implementations generate.
 
 2.4.1. Simple Bandwidth Scanner
 
-Every relay_Line in sbws version 0.1.0 consists of:
+Every RelayLine in sbws version 0.1.0 consists of:
 
   "node_id=" hexdigest SP
   
@@ -332,7 +332,7 @@ Every relay_Line in sbws version 0.1.0 consists of:
     
 2.4.2. Torflow
 
-Torflow relay_Lines include node_id and bw, and other key_value pairs [2].
+Torflow RelayLines include node_id and bw, and other key_value pairs [2].
 
 References:
 
