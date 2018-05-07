@@ -75,9 +75,6 @@
       ([A-Fa-f0-9]))
     MasterKey
 
-  [NOTE: fingerprint is used in declaration in 2.1.1,
-  but it's not defined. Instead hexdigest is defined]
-
   [NOTE: MasterKey is not defined, but used in declaration]
 
   Nonterminals defined in Tor Directory List Format
