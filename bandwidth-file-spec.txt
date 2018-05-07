@@ -5,8 +5,10 @@
 1. Scope and preliminaries
 
   This document describes the format of Tor's bandwidth list,
-  version 1.0.0 and later.
- 
+  version 1.0.0, 1.1.0 and later.
+  It is new specification for the existing format 1.0.0.
+  Describes a new format 1.1.0, which is backwards compatible with 
+  1.0.0 parsers.
   [NOTE: should bandwidth list use capital letters in all the document
   as in the title?]
 
