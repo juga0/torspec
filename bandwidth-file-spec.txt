@@ -114,7 +114,8 @@
 
 Some header lines MUST appear in specific positions, as documented below.
 All other lines can appear in any order.
-
+If a parser does not recognize any extra material in a header line, 
+the line MUST be ignored.
 There MUST NOT be multiple key_value header lines with the same key.
 
 It consists of:
@@ -219,6 +220,9 @@ There can be at most one relay_line per relay identity (fingerprint).
 
 There MUST NOT be multiple key_value pairs with the same key in the same
 relay_line.
+
+If a parser does not recognize any extra material in a relay_line, 
+the line MUST be ignored.
   
 Each relay_line MUST include the following key_value in arbitrary order:
 
