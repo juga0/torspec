@@ -44,8 +44,8 @@
 
    1.0.0 - The legacy fallback Bandwidth List format
 
-   1.1.0 - Adds KeyValue Lines to the header, format version,
-           optional ones and section separator.
+   1.1.0 - Adds KeyValue Lines to the Header List section, add KeyValues
+           to RelayLines and format versions.
 
   All Tor versions can consume format version 1.0.0.
   All Tor versions can consume format version 1.1.0,
@@ -85,7 +85,7 @@
     KeyValue ::= Keyword "=" Value
     Value ::= ArgumentCharValue+
     ArgumentCharValue ::= any printing ASCII character except NL and SP.
-    separator ::= "====="
+    Terminator ::= "====="
     Timestamp ::= Int
     Bandwidth ::= Int
     MasterKey ::= a base64-encoded Ed25519 public key, with
@@ -195,18 +195,15 @@ It consists of:
     relay measurements format.
     If there are, the parser MAY ignore conflicting keywords.
 
-  separator NL
+  Terminator NL
 
     [Zero or one time.]
     
-    The Header List section ends with this separator.
+    The Header List section ends with this Terminator.
 
     In version 1.0.0, Header List ends when the first relay bandwidth
     is found conforming to the next section.
-    Implementations of version 1.1.0 SHOULD include this separator.
-
-    [NOTE: should the separator be a different section since it's not
-    technically part of the header nor the Relays' Bandwidth List?]
+    Implementations of version 1.1.0 SHOULD include this Line.
 
 2.3. Relays' Bandwidth List format
 
