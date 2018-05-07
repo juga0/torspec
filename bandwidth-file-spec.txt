@@ -44,7 +44,7 @@
 
    1.0.0 - The legacy fallback Bandwidth List format
 
-   1.1.0 - Adds key_value Lines to the header, format version,
+   1.1.0 - Adds KeyValue Lines to the header, format version,
            optional ones and section separator.
 
   All Tor versions can consume format version 1.0.0.
@@ -81,8 +81,8 @@
   We define the following nonterminals:
 
     Line ::= ArgumentChar* NL
-    RelayLine ::= key_value (SP key_value)* NL
-    key_value ::= Keyword "=" value
+    RelayLine ::= KeyValue (SP KeyValue)* NL
+    KeyValue ::= Keyword "=" value
     value ::= Value+
     Value ::= any printing ASCII character except NL and SP.
     separator ::= "====="
@@ -93,8 +93,8 @@
 
   [NOTE: should all the terms in definitions start with capital letter?]
   [NOTE: Define datetime?: datetime::= YYYY-MM-DD HH:MM:SS, blah?]
-  [NOTE: separator, value and key_value are defined in dir-spec, but with a 
-  different format, should i call them other way?]
+  Note that key_value and value are defined in Tor directory protocol
+  with different formats to KeyValue and Value here.
 
   All Lines in the file MUST be 510 characters or less, to allow for the
   trailing newline and NULL characters.
@@ -119,7 +119,7 @@ It consists of:
     [At start, exactly once.]
 
     The Unix Epoch time in seconds when the file was created.
-    It does not follow the key_value format for backwards 
+    It does not follow the KeyValue format for backwards 
     compatibility with version 1.0.0.
 
   "version=" version_number NL
@@ -173,17 +173,17 @@ It consists of:
     
     This Line has been added in version 1.1.0 of this specification.
 
-  key_value NL
+  KeyValue NL
 
     [Zero or more times.]
 
-    There MUST NOT be multiple key_value header Lines with the same key.
+    There MUST NOT be multiple KeyValue header Lines with the same key.
     If there are, the parser SHOULD choose an arbitrary Line.
 
-    If a parser does not recognize a Keyword in a key_value Line, it 
+    If a parser does not recognize a Keyword in a KeyValue Line, it 
     MUST be ignored.
 
-    Future format versions may include additional key_value header Lines.
+    Future format versions may include additional KeyValue header Lines.
     Additional header Lines will be accompanied by a minor version increment.
     
     Implementations MAY add additional header Lines as needed. This
@@ -218,7 +218,7 @@ in arbitrary order.
 There can be at most one RelayLine per relay identity (node_id or
 master-key-ed25519).
 
-There MUST NOT be multiple key_value pairs with the same key in the same
+There MUST NOT be multiple KeyValue pairs with the same key in the same
 RelayLine.
 If there are, the parser SHOULD choose an arbitrary value.
 
@@ -233,10 +233,10 @@ the Line MUST be ignored.
 If a RelayLine does not conform to the following format, the Line 
 SHOULD be ignored by parsers.
   
-Each RelayLine MUST include the following key_value pairs:
+Each RelayLine MUST include the following KeyValue pairs:
 In version 1.0.0, node_id MUST NOT be at the end of the Line.
 [NOTE: even if we backport the fix to 2.9.0?]
-In version 1.1.0, the key_value can be in any arbitrary order.
+In version 1.1.0, the KeyValue can be in any arbitrary order.
 [TODO: list of Tor version that support it, when it's done]
 
   "node_id=" hexdigest
@@ -250,7 +250,7 @@ In version 1.1.0, the key_value can be in any arbitrary order.
     [Zero or one time.]
 
     The relays's master Ed25519 key, base64 encoded, 
-    without trailing "="s, to avoid ambiguity with key_value "="
+    without trailing "="s, to avoid ambiguity with KeyValue "="
     character.
 
     Implementations of version 1.1.0 SHOULD include both node_id and
@@ -278,26 +278,26 @@ In version 1.1.0, the key_value can be in any arbitrary order.
     same network, their measurements MAY need further scaling. See Appendix B
     for information about scaling, and one possible scaling method.
   
-  key_value
+  KeyValue
 
     [Zero or more times.]
 
-    Future format versions may include additional key_value pairs on a RelayLine.
-    Additional key_value pairs will be accompanied by a minor version increment.
+    Future format versions may include additional KeyValue pairs on a RelayLine.
+    Additional KeyValue pairs will be accompanied by a minor version increment.
   
-    Implementations MAY add additional relay key_value pairs as needed. This
+    Implementations MAY add additional relay KeyValue pairs as needed. This
     specification SHOULD be updated to avoid conflicting meanings for the
     same relay keys.
   
-    Parsers MUST NOT rely on the order of these additional key_value pairs.
+    Parsers MUST NOT rely on the order of these additional KeyValue pairs.
   
-    Additional key_value pairs MUST NOT use any keywords specified in the
+    Additional KeyValue pairs MUST NOT use any keywords specified in the
     header format.
     If there are, the parser MAY ignore conflicting keywords.
   
 2.4. Implementation notes
 
-key_value pairs in RelayLines that current implementations generate.
+KeyValue pairs in RelayLines that current implementations generate.
 
 2.4.1. Simple Bandwidth Scanner
 
@@ -332,7 +332,7 @@ Every RelayLine in sbws version 0.1.0 consists of:
     
 2.4.2. Torflow
 
-Torflow RelayLines include node_id and bw, and other key_value pairs [2].
+Torflow RelayLines include node_id and bw, and other KeyValue pairs [2].
 
 References:
 
