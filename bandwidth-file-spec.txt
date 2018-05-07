@@ -82,8 +82,8 @@
 
     Line ::= ArgumentChar* NL
     RelayLine ::= KeyValue (SP KeyValue)* NL
-    KeyValue ::= Keyword "=" value
-    value ::= ArgumentCharValue+
+    KeyValue ::= Keyword "=" Value
+    Value ::= ArgumentCharValue+
     ArgumentCharValue ::= any printing ASCII character except NL and SP.
     separator ::= "====="
     timestamp ::= Int
@@ -134,7 +134,7 @@ It consists of:
     Version 1.0.0 documents do not contain this Line, and the
     version_number is considered to be "1.0.0".
 
-  "software=" value NL
+  "software=" Value NL
 
     [Zero or one time.]
 
@@ -145,7 +145,7 @@ It consists of:
     Version 1.0.0 documents do not contain this Line, and the software is
     considered to be "torflow".
 
-  "software_version=" value NL
+  "software_version=" Value NL
 
     [Zero or one time.]
 
@@ -220,11 +220,11 @@ master-key-ed25519).
 
 There MUST NOT be multiple KeyValue pairs with the same key in the same
 RelayLine.
-If there are, the parser SHOULD choose an arbitrary value.
+If there are, the parser SHOULD choose an arbitrary Value.
 
 There MUST NOT be multiple RelayLine per relay identity (node_id or 
 master-key-ed25519).
-If there are, the parser SHOULD choose an arbitrary value.
+If there are, the parser SHOULD choose an arbitrary Value.
 [NOTE: or should be ignored?]
 
 If a parser does not recognize any extra material in a RelayLine, 
