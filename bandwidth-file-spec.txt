@@ -217,8 +217,9 @@ It consists of:
 
 2.3. List Relays' Bandwidth format
 
-It consists of zero or more relay_line with the relays' bandwidth
+It consists of one or more relay_lines with the relays' bandwidth
 in arbitrary order.
+[NOTE: or should be allowed zero lines?]
   
 There can be at most one relay_line per relay identity (fingerprint).
 
