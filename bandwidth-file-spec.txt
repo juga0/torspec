@@ -102,6 +102,7 @@
     timestamp ::= Int
     bandwidth ::= Int
 
+  [NOTE: should all the terms in definitions start with capital letter?]
   [NOTE: Define datetime?: datetime::= YYYY-MM-DD HH:MM:SS, blah?]
   [NOTE: separator, value and key_value are defined in dir-spec, but with a 
   different format, should i call them other way?]
