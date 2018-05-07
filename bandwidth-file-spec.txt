@@ -207,9 +207,8 @@ It consists of:
 
 2.3. Relays' Bandwidth List format
 
-It consists of one or more RelayLines with the relays' bandwidth
+It consists of zero or more RelayLines with the relays' bandwidth
 in arbitrary order.
-[NOTE: or should be allowed zero Lines?]
 
 There can be at most one RelayLine per relay identity (node_id or
 master-key-ed25519).
