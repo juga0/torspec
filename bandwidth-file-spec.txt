@@ -199,6 +199,7 @@ It consists of:
     
     Additional header lines MUST NOT use any keywords specified in the
     relay measurements format.
+    If there are, the parser MAY ignore conflicting keywords.
     
     If a header line does not conform to this format, the line SHOULD be
     ignored by parsers.
