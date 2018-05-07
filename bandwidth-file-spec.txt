@@ -73,7 +73,6 @@
     NL (newline)
     Keyword
     ArgumentChar
-    fingerprint (hexdigest)
     nickname
     hexdigest (a '$', followed by 40 hexadecimal characters 
       ([A-Fa-f0-9]))
