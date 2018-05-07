@@ -86,7 +86,7 @@
     Value ::= ArgumentCharValue+
     ArgumentCharValue ::= any printing ASCII character except NL and SP.
     separator ::= "====="
-    timestamp ::= Int
+    Timestamp ::= Int
     bandwidth ::= Int
     MasterKey ::= a base64-encoded Ed25519 public key, with
     padding characters omitted.
@@ -114,7 +114,7 @@ ignored by parsers.
 
 It consists of:
 
-  timestamp NL
+  Timestamp NL
 
     [At start, exactly once.]
 
@@ -323,7 +323,7 @@ Every RelayLine in sbws version 0.1.0 consists of:
     
     The Round Trip Time in milliseconds to obtain 1 byte of data.
   
-  "time=" timestamp NL
+  "time=" Timestamp NL
   
     [Exactly once.]
 
