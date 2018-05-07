@@ -88,6 +88,9 @@
 
     version_number
 
+  [NOTE: version_number is not defined, but used in declaration 
+  in dir-list-spec]
+
   We define the following nonterminals:
 
     Value ::= any printing ASCII character except NL and SP.
