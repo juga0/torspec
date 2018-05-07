@@ -234,6 +234,9 @@ If there are, the parser SHOULD choose an arbitrary value.
 
 If a parser does not recognize any extra material in a relay_line, 
 the line MUST be ignored.
+
+If a relay_line does not conform to the following format, the line 
+SHOULD be ignored by parsers.
   
 Each relay_line MUST include the following key_value pairs:
 In version 1.0.0, node_id MUST NOT be at the end of the line.
