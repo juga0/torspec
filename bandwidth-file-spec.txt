@@ -48,6 +48,11 @@
    1.1.0 - Adds key_value lines to the header, format version,
            optional ones and section separator.
 
+  All Tor versions can consume format version 1.0.0.
+  All Tor versions can consume format version 1.1.0,
+  but they warn on additional header lines. 
+  [NOTE: this will be fixed?]
+
 2. Format details
 
   The bandwidth list MUST contain the following sections:
