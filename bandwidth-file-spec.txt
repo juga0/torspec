@@ -301,6 +301,8 @@ In version 1.1.0, the key_value can be in any arbitrary order.
   
 2.4. Implementation notes
 
+key_value pairs in relay_lines that current implementations generate.
+
 2.4.1. Simple Bandwidth Scanner
 
 Every relay_line in sbws version 0.1.0 consists of:
