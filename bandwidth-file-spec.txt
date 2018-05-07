@@ -74,6 +74,11 @@
     ArgumentChar
     fingerprint (hexdigest)
     nickname
+    hexdigest (a '$', followed by 40 hexadecimal characters 
+      ([A-Fa-f0-9]))
+
+  [NOTE: fingerprint is used in declaration in 2.1.1,
+  but it's not defined. Instead hexdigest is defined]
 
   Nonterminals defined in "Tor Directory List Format" (dir-list-spec.txt),
   section 2.2.1.:
@@ -197,11 +202,11 @@ relay_line.
   
 Each relay_line MUST include the following key_value in arbitrary order:
 
-  "node_id=" fingerprint
+  "node_id=" hexdigest
     
     [Exactly once.]
     
-    The fingerprint of the relay.
+    The fingerprint for the relay's RSA identity key.
     
   "bw=" bandwidth
   
@@ -248,7 +253,7 @@ Each relay_line MUST include the following key_value in arbitrary order:
 
 Every relay_line in sbws version 0.1.0 consists of:
 
-  "node_id=" fingerprint SP
+  "node_id=" hexdigest SP
   
     As above.
   
