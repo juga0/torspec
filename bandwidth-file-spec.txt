@@ -210,9 +210,6 @@ It consists of:
 It consists of zero or more RelayLines with the relays' bandwidth
 in arbitrary order.
 
-There can be at most one RelayLine per relay identity (node_id or
-master-key-ed25519).
-
 There MUST NOT be multiple KeyValue pairs with the same key in the same
 RelayLine.
 If there are, the parser SHOULD choose an arbitrary Value.
