@@ -90,12 +90,15 @@
     value ::= ArgumentChar+
     key_value ::= Keyword "=" value
     line ::= ArgumentChar* NL
+    separator ::= "====="
     timestamp ::= Int
     bandwidth ::= Int
     relay_line ::= key_value (SP key_value)* NL
 
-[NOTE: Define datetime?: datetime::= YYYY-MM-DD HH:MM:SS, blah?]
-  
+  [NOTE: Define datetime?: datetime::= YYYY-MM-DD HH:MM:SS, blah?]
+  [NOTE: separator, value and key_value are defined in dir-spec, but with a 
+  different format, should i call them other way?]
+
 2.2. List Header format
 
 Some header lines MUST appear in specific positions, as documented below.
@@ -181,16 +184,18 @@ It consists of:
     If a header line does not conform to this format, the line SHOULD be
     ignored by parsers.
 
-  NL
+  separator NL
 
     [Zero or one time.]
+    
+    The List Header section ends with this separator.
 
-    The header ends.
-    
-    This line has been added in version 1.1.0 of this specification.
-    
-    For version 1.0.0 documents, the header ends when the first relay
-    measurement line is found conforming to the next section.
+    In version 1.0.0, List Header ends when the first relay bandwidth
+    is found conforming to the next section.
+    Implementations of version 1.1.0 SHOULD include this separator.
+
+    [NOTE: should the separator be a different section since it's not
+    technically part of the header nor the list relays' bandwidth?]
 
 2.3. List Relays' Bandwidth format
 
